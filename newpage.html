@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Animation Page</title>
+
+    <!-- Inline CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff69b4;
+            padding: 20px 0;
+            color: white;
+        }
+
+        .kiss-animations {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .kiss {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+
+        .kiss-animation {
+            animation: blowKiss 2s infinite ease-in-out;
+        }
+
+        @keyframes blowKiss {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Add a class to animate the blown kiss */
+        .kiss-blown {
+            animation: blowKiss 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sending Kisses</h1>
+    </header>
+
+    <section class="kiss-animations">
+        <!-- Example of a kiss icon represented by an SVG -->
+        <div class="kiss">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <!-- Example of lips as a circle (could be customized further) -->
+                <circle cx="50" cy="50" r="30" fill="red" class="kiss-animation"/>
+            </svg>
+        </div>
+
+        <div class="kiss">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="30" fill="pink" class="kiss-animation"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // JavaScript to handle interactive blow kiss animation
+        document.querySelectorAll('.kiss').forEach(kiss => {
+            kiss.addEventListener('click', () => {
+                // Add the "kiss-blown" class to trigger animation
+                kiss.classList.add('kiss-blown');
+
+                // Remove the "kiss-blown" class after 2 seconds to reset animation
+                setTimeout(() => {
+                    kiss.classList.remove('kiss-blown');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
